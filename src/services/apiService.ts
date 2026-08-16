@@ -29,3 +29,8 @@ export async function fetchProducts(): Promise<ApiProduct[]> {
         if (error instanceof AppError) {
             throw error;
         }
+         throw new AppError(
+            "Unable to fetch products from the API."
+        );
+    }
+}
