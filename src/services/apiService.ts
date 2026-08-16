@@ -8,3 +8,6 @@ export interface ApiProduct {
     category: string;
     thumbnail: string;
 }
+interface ProductResponse {
+    products: ApiProduct[];
+}
