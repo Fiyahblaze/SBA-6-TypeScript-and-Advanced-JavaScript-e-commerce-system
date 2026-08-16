@@ -11,3 +11,8 @@ export interface ApiProduct {
 interface ProductResponse {
     products: ApiProduct[];
 }
+export async function fetchProducts(): Promise<ApiProduct[]> {
+    try {
+        const response = await fetch(
+            "https://dummyjson.com/products"
+        );
