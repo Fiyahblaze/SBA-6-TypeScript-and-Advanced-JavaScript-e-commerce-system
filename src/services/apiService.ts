@@ -16,3 +16,16 @@ export async function fetchProducts(): Promise<ApiProduct[]> {
         const response = await fetch(
             "https://dummyjson.com/products"
         );
+        if (!response.ok) {
+            throw new AppError(
+                `API request failed: ${response.status}`
+            );
+        }
+
+        const data: ProductResponse = await response.json();
+
+        return data.products;
+    } catch (error) {
+        if (error instanceof AppError) {
+            throw error;
+        }
