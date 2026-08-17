@@ -1,16 +1,45 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./src/style.css" />
-    <title>e-commerce-system</title>
-  </head>
-  <body>
-    <h1 class="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>E-Commerce Product Management</title>
+</head>
+
+<body class="bg-gray-100 min-h-screen">
+
+    <header class="bg-gray-900 text-white py-8">
+        <div class="max-w-6xl mx-auto px-6">
+
+            <h1 class="text-3xl font-bold">
+                E-Commerce Product Management
+            </h1>
+
+            <p class="mt-2 text-gray-300">
+                TypeScript Product Management System
+            </p>
+
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 py-10">
+
+        <h2 class="text-2xl font-bold mb-6">
+            Products
+        </h2>
+
+        <div
+            id="products"
+            class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+        >
+        </div>
+
+    </main>
+
     <script type="module" src="/src/main.ts"></script>
-  </body>
+
+</body>
+
 </html>
