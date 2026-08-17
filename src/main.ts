@@ -39,4 +39,21 @@ async function main(): Promise<void> {
                     product.thumbnail
                 )
         );
-        
+        const finalPrice =
+                discountedPrice + tax;
+
+            product.displayDetails();
+
+            console.log(
+                `Discount Amount: $${discount.toFixed(2)}`
+            );
+
+            console.log(
+                `Tax: $${tax.toFixed(2)}`
+            );
+
+            console.log(
+                `Final Price: $${finalPrice.toFixed(2)}`
+            );
+
+            console.log("----------------------");
