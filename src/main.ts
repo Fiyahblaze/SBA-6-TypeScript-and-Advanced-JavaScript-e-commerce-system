@@ -6,62 +6,49 @@ import { calculateDiscount } from "./utils/discountCalculator";
 import { calculateTax } from "./utils/taxCalculator";
 import { handleError } from "./utils/errorHandler";
 
-const productsContainer =
+const productsContainer = document.getElementById("products");
 
-    document.getElementById("products");
 async function main(): Promise<void> {
     try {
         const data = await fetchProducts();
 
         const products = data.slice(0, 6).map(
-            product =>
+            (item) =>
                 new Product(
-                    product.id,
-                    product.title,
-                    product.price,
-                    product.discountPercentage,
-                    product.category,
-                    product.thumbnail
+                    item.id,
+                    item.title,
+                    item.price,
+                    item.discountPercentage,
+                    item.category,
+                    item.thumbnail
                 )
         );
-        async function main(): Promise<void> {
-    try {
-        const data = await fetchProducts();
 
-        const products = data.slice(0, 6).map(
-            product =>
-                new Product(
-                    product.id,
-                    product.title,
-                    product.price,
-                    product.discountPercentage,
-                    product.category,
-                    product.thumbnail
-                )
-        );
-        const finalPrice =
-                discountedPrice + tax;
+        products.forEach((product) => {
+            const discount = calculateDiscount(
+                product.price,
+                product.discountPercentage
+            );
+
+            const discountedPrice = product.getPriceWithDiscount();
+
+            const tax = calculateTax(
+                discountedPrice,
+                product.category
+            );
+
+            const finalPrice = discountedPrice + tax;
 
             product.displayDetails();
 
-            console.log(
-                `Discount Amount: $${discount.toFixed(2)}`
-            );
-
-            console.log(
-                `Tax: $${tax.toFixed(2)}`
-            );
-
-            console.log(
-                `Final Price: $${finalPrice.toFixed(2)}`
-            );
-
+            console.log(`Discount Amount: $${discount.toFixed(2)}`);
+            console.log(`Tax: $${tax.toFixed(2)}`);
+            console.log(`Final Price: $${finalPrice.toFixed(2)}`);
             console.log("----------------------");
 
             if (productsContainer) {
                 productsContainer.innerHTML += `
-                <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                        
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
                         <img
                             src="${product.thumbnail}"
                             alt="${product.title}"
@@ -69,7 +56,6 @@ async function main(): Promise<void> {
                         >
 
                         <div class="p-5">
-
                             <h2 class="text-xl font-bold">
                                 ${product.title}
                             </h2>
@@ -97,13 +83,12 @@ async function main(): Promise<void> {
                                 Final Price:
                                 $${finalPrice.toFixed(2)}
                             </p>
-
                         </div>
                     </div>
                 `;
             }
         });
-        } catch (error) {
+    } catch (error) {
         handleError(error);
 
         if (productsContainer) {
