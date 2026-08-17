@@ -103,4 +103,17 @@ async function main(): Promise<void> {
                 `;
             }
         });
-        
+        } catch (error) {
+        handleError(error);
+
+        if (productsContainer) {
+            productsContainer.innerHTML = `
+                <p class="text-red-600 font-bold">
+                    Unable to load products.
+                </p>
+            `;
+        }
+    }
+}
+
+main();
