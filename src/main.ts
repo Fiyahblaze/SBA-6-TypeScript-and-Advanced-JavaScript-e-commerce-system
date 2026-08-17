@@ -57,3 +57,6 @@ async function main(): Promise<void> {
             );
 
             console.log("----------------------");
+            
+            if (productsContainer) {
+                productsContainer.innerHTML += `
