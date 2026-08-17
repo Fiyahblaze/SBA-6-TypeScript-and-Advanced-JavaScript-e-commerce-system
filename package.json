@@ -1,4 +1,6 @@
 "scripts": {
-    "build": "tsc && npm run build:css",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
     "build:css": "tailwindcss -i ./src/style.css -o ./src/output.css"
 }
