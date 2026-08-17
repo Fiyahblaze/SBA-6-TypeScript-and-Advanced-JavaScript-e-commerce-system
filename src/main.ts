@@ -57,6 +57,50 @@ async function main(): Promise<void> {
             );
 
             console.log("----------------------");
-            
+
             if (productsContainer) {
                 productsContainer.innerHTML += `
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        
+                        <img
+                            src="${product.thumbnail}"
+                            alt="${product.title}"
+                            class="w-full h-48 object-cover"
+                        >
+
+                        <div class="p-5">
+
+                            <h2 class="text-xl font-bold">
+                                ${product.title}
+                            </h2>
+
+                            <p class="text-gray-500 capitalize">
+                                ${product.category}
+                            </p>
+
+                            <p class="mt-3">
+                                Original Price:
+                                $${product.price.toFixed(2)}
+                            </p>
+
+                            <p class="text-green-600">
+                                Discount:
+                                $${discount.toFixed(2)}
+                            </p>
+
+                            <p>
+                                Tax:
+                                $${tax.toFixed(2)}
+                            </p>
+
+                            <p class="mt-2 text-lg font-bold">
+                                Final Price:
+                                $${finalPrice.toFixed(2)}
+                            </p>
+
+                        </div>
+                    </div>
+                `;
+            }
+        });
+        
